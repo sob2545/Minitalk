@@ -6,13 +6,13 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 14:03:49 by sesim             #+#    #+#             */
-/*   Updated: 2022/06/18 09:24:24 by sesim            ###   ########.fr       */
+/*   Updated: 2022/06/20 07:45:21 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "./libft/libft.h"
-#include "minitalk_bonus.h"
+#include "minitalk.h"
 
 int	g_cnt;
 
@@ -107,17 +107,7 @@ int	main(int argc, char **argv)
 {
 	pid_t	s_pid;
 
-	if (argc != 3 || !ft_strlen(argv[2]))
-	{
-		ft_putstr_fd("Invalid Arguments!\n", 2);
-		return (0);
-	}
-	s_pid = ft_adtoi(argv[1]);
-	if ((s_pid < 100) || (s_pid > 99998))
-	{
-		ft_putstr_fd("Invalid Server PID!\n", 2);
-		return (0);
-	}
+	s_pid = arg_checker(argc, argv[1], argv[2]);
 	ft_putstr_fd("Sent Bytes    : ", 1);
 	g_cnt = ft_strlen(argv[2]);
 	ft_putnbr_fd(g_cnt, 1);
